@@ -5,9 +5,11 @@ import java.io.*;
  */
 public class Board {
     private PrintStream printStream = new PrintStream(System.out);
+    private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-    public Board(PrintStream printStream) {
+    public Board(PrintStream printStream, BufferedReader bufferedReader) {
         this.printStream = printStream;
+        this.bufferedReader = bufferedReader;
     }
 
     public void setup() {
@@ -26,4 +28,6 @@ public class Board {
 
 
     }
+
+
 }

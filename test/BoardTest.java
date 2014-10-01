@@ -2,14 +2,15 @@ import org.junit.Test;
 
 import java.io.*;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 public class BoardTest {
+
+
     private PrintStream printStream = mock(PrintStream.class);
-    private Board board = new Board(printStream);
-    private BufferedReader bufferReader;
+    private BufferedReader bufferedReader = mock(BufferedReader.class);
+    private Board board = new Board(printStream, bufferedReader);
 
 
     @Test
@@ -26,22 +27,16 @@ public class BoardTest {
     }
 
     @Test
-    public void testInterpretPlayerInput() throws IOException {
+    public void shouldFooWhenBoo() throws IOException {
 
         PrintStream printStream = mock(PrintStream.class);
         BufferedReader bufferedReader = mock(BufferedReader.class);
-        Board board = new Board(printStream);
+        Board board = new Board(printStream, bufferedReader);
         when(bufferedReader.readLine()).thenReturn("1");
         board.interpretPlayerInput(bufferedReader);
         verify(printStream).println(1);
 
 
     }
-
-    //        verify(printStream).println(" x |   |\n" +
-//                "------------\n" +
-//                "   |   |\n" +
-//                "------------\n" +
-//                "   |   |\n");
 
 }
