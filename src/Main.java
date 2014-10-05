@@ -10,11 +10,13 @@ public class Main {
     public static void main(String[] args) {
         PrintStream printStream = new PrintStream(System.out);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        Board board = new Board(printStream, bufferedReader);
-        board.printBoard(0);
+        String[] playerChoices = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
+
+        Board board = new Board(printStream, bufferedReader,playerChoices );
+        board.printBoard(playerChoices);
 
         try {
-            board.drawPlayerInput(bufferedReader);
+            board.injectPlayerChoice(bufferedReader);
         } catch (IOException e) {
             e.printStackTrace();
         }
