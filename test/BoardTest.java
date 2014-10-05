@@ -15,7 +15,7 @@ public class BoardTest {
 
     @Test
     public void testPrintBoard() {
-        board.printBoard();
+        board.printBoard(0);
 
         verify(printStream).println("   |   |\n" +
                 "------------\n" +
@@ -27,14 +27,39 @@ public class BoardTest {
     }
 
     @Test
-    public void shouldFooWhenBoo() throws IOException {
+    public void shouldDrawBoardLocation1XWhenPlayerEnter1() throws IOException {
 
         PrintStream printStream = mock(PrintStream.class);
         BufferedReader bufferedReader = mock(BufferedReader.class);
         Board board = new Board(printStream, bufferedReader);
         when(bufferedReader.readLine()).thenReturn("1");
-        board.interpretPlayerInput(bufferedReader);
-        verify(printStream).println(1);
+
+        board.drawPlayerInput(bufferedReader);
+        verify(printStream).println("Enter number between 1-9:");
+        verify(printStream).println(" X |   |\n" +
+                "------------\n" +
+                "   |   |\n" +
+                "------------\n" +
+                "   |   |\n");
+
+
+    }
+
+    @Test
+    public void shouldDrawBoardLocation2XWhenPlayerEnter2() throws IOException {
+
+        PrintStream printStream = mock(PrintStream.class);
+        BufferedReader bufferedReader = mock(BufferedReader.class);
+        Board board = new Board(printStream, bufferedReader);
+        when(bufferedReader.readLine()).thenReturn("2");
+
+        board.drawPlayerInput(bufferedReader);
+        verify(printStream).println("Enter number between 1-9:");
+        verify(printStream).println("   | X |\n" +
+                "------------\n" +
+                "   |   |\n" +
+                "------------\n" +
+                "   |   |\n");
 
 
     }

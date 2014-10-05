@@ -12,19 +12,41 @@ public class Board {
         this.bufferedReader = bufferedReader;
     }
 
-    public void printBoard() {
+    public void printBoard(int playerChoice) {
 
-        printStream.println("   |   |\n" +
-                "------------\n" +
-                "   |   |\n" +
-                "------------\n" +
-                "   |   |\n");
+        if(playerChoice == 1){
+            printStream.println(" X |   |\n" +
+                    "------------\n" +
+                    "   |   |\n" +
+                    "------------\n" +
+                    "   |   |\n");
+
+        }
+
+        if(playerChoice == 2){
+            printStream.println("   | X |\n" +
+                    "------------\n" +
+                    "   |   |\n" +
+                    "------------\n" +
+                    "   |   |\n");
+
+        }else{
+            printStream.println("   |   |\n" +
+                    "------------\n" +
+                    "   |   |\n" +
+                    "------------\n" +
+                    "   |   |\n");
+        }
+
     }
 
-    public void interpretPlayerInput(BufferedReader bufferedReader) throws IOException {
+    public void drawPlayerInput(BufferedReader bufferedReader) throws IOException {
+
+        printStream.println("Enter number between 1-9:");
+        this.bufferedReader = bufferedReader;
         String input = bufferedReader.readLine();
-        int result = Integer.parseInt(input);
-        printStream.println(result);
+        int playerChoice = Integer.parseInt(input);
+        printBoard(playerChoice);
 
 
     }
