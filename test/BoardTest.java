@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.*;
@@ -10,12 +11,18 @@ import static org.mockito.Mockito.*;
 public class BoardTest {
 
 
-    private PrintStream printStream = mock(PrintStream.class);
-    private BufferedReader bufferedReader = mock(BufferedReader.class);
+    private PrintStream printStream;
+    private BufferedReader bufferedReader;
     private String[] playerChoices = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
+    private Board board;
 
-    private Board board = new Board(printStream, bufferedReader,playerChoices );
+    @Before
+    public void setUp() {
+        printStream = mock(PrintStream.class);
+        bufferedReader = mock(BufferedReader.class);
 
+        board = new Board(printStream, bufferedReader, playerChoices);
+    }
 
     @Test
     public void shouldDrawEmptyBoard() {
@@ -42,12 +49,10 @@ public class BoardTest {
 
 
     }
+
     @Test
     public void shouldGiveLocation1XWhenPlayerEnter1() throws IOException {
 
-        PrintStream printStream = mock(PrintStream.class);
-        BufferedReader bufferedReader = mock(BufferedReader.class);
-        board = new Board(printStream, bufferedReader,playerChoices );
         when(bufferedReader.readLine()).thenReturn("1");
 
         board.injectPlayerChoice(bufferedReader);
@@ -59,14 +64,17 @@ public class BoardTest {
     @Test
     public void shouldDrawBoardLocation2XWhenPlayerEnter2() throws IOException {
 
-        PrintStream printStream = mock(PrintStream.class);
-        BufferedReader bufferedReader = mock(BufferedReader.class);
-        board = new Board(printStream, bufferedReader,playerChoices );
         when(bufferedReader.readLine()).thenReturn("2");
 
         board.injectPlayerChoice(bufferedReader);
 
         assertThat(playerChoices, is(new String[]{" ", "X", " ", " ", " ", " ", " ", " ", " "}));
+
+
+    }
+
+    @Test
+    public void shouldDrawBoardLocation1OWhenPlayer2Enter1() {
 
 
     }
