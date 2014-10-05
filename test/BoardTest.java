@@ -14,8 +14,8 @@ public class BoardTest {
 
 
     @Test
-    public void testSetup() {
-        board.setup();
+    public void testPrintBoard() {
+        board.printBoard();
 
         verify(printStream).println("   |   |\n" +
                 "------------\n" +

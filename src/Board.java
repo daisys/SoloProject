@@ -12,7 +12,7 @@ public class Board {
         this.bufferedReader = bufferedReader;
     }
 
-    public void setup() {
+    public void printBoard() {
 
         printStream.println("   |   |\n" +
                 "------------\n" +

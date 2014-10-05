@@ -10,7 +10,7 @@ public class Main {
         PrintStream printStream = new PrintStream(System.out);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         Board board = new Board(printStream, bufferedReader);
-        board.setup();
+        board.printBoard();
 
     }
 }
